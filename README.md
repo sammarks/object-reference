@@ -1,6 +1,10 @@
 ![](https://raw.githubusercontent.com/sammarks/art/master/object-reference/header.jpg)
 
-[![CircleCI](https://circleci.com/gh/sammarks/object-reference/tree/master.svg?style=svg)](https://circleci.com/gh/sammarks/object-reference/tree/master)
+[![CircleCI](https://img.shields.io/circleci/project/github/sammarks/object-reference.svg)](https://circleci.com/gh/sammarks/object-reference/tree/master)
+[![NPM](https://img.shields.io/npm/v/object-reference.svg)](https://www.npmjs.com/package/object-reference)
+[![NPM](https://img.shields.io/npm/dm/object-reference.svg)](https://www.npmjs.com/package/object-reference)
+![License](https://img.shields.io/github/license/sammarks/object-reference.svg)
+![Issues](https://img.shields.io/github/issues/sammarks/object-reference.svg)
 
 Object reference allows you to build objects that reference themselves.
 
