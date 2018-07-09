@@ -1,4 +1,4 @@
-import { resolve } from './index'
+import resolve from './index'
 import { expect } from 'chai'
 
 let result: any = {}

@@ -54,7 +54,7 @@ const resolveObject: resolveObject = (parentObj, obj, parentKeys = []) => {
   }, {})
 }
 
-export const resolve = (obj: object): object => {
+const resolve = (obj: object): object => {
   return resolveObject(obj, obj)
 }
 
