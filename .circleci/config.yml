@@ -1,34 +1,52 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm run lint
+      - run: npm run type-check
+      - run:
+          name: Jest Suite
+          command: npm test -- --ci --testResultsProcessor="jest-junit"
+          environment:
+            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
+      - store_test_results:
+          path: reports
+  deploy:
+    docker:
+      - image: circleci/node:7.10
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm publish
 workflows:
   version: 2
   build-and-deploy:
     jobs:
       - build:
-          docker:
-            - image: circleci/node:7.10
           filters:
             tags:
               only: /.*/
-          working_directory: ~/repo
-          steps:
-            - checkout
-            - restore_cache:
-                keys:
-                  - v1-dependencies-{{ checksum "package.json" }}
-                  - v1-dependencies-
-            - run: npm install
-            - save_cache:
-                paths:
-                  - node_modules
-                key: v1-dependencies-{{ checksum "package.json" }}
-            - run: npm run lint
-            - run: npm run type-check
-            - run:
-                name: Jest Suite
-                command: npm test -- --ci --testResultsProcessor="jest-junit"
-                environment:
-                  JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
-            - store_test_results:
-                path: reports
       - deploy:
           requires:
             - build
@@ -37,18 +55,4 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
-          docker:
-            - image: circleci/node:7.10
-          steps:
-            - checkout
-            - restore_cache:
-                keys:
-                  - v1-dependencies-{{ checksum "package.json" }}
-                  - v1-dependencies-
-            - run: npm install
-            - save_cache:
-                paths:
-                  - node_modules
-                key: v1-dependencies-{{ checksum "package.json" }}
-            - run: npm publish
 
