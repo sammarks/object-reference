@@ -1,0 +1,60 @@
+{
+  "name": "object-reference",
+  "version": "0.0.1",
+  "description": "Resolves self-references in objects.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc --emitDeclarationOnly && babel src --out-dir lib --extensions \".ts,.tsx\"",
+    "type-check": "tsc --noEmit",
+    "lint": "tslint --project .",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sammarks/object-reference.git"
+  },
+  "keywords": [
+    "object",
+    "reference"
+  ],
+  "author": "Sam Marks <sam@sammarks.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sammarks/object-reference/issues"
+  },
+  "homepage": "https://github.com/sammarks/object-reference#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.52",
+    "@babel/core": "^7.0.0-beta.52",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.52",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.52",
+    "@babel/preset-env": "^7.0.0-beta.52",
+    "@babel/preset-typescript": "^7.0.0-beta.52",
+    "@types/chai": "^4.1.4",
+    "@types/jest": "^23.1.4",
+    "@types/lodash": "^4.14.110",
+    "chai": "^4.1.2",
+    "jest": "^23.3.0",
+    "ts-jest": "^23.0.0",
+    "tslint": "^5.10.0",
+    "tslint-config-standard": "^7.1.0",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}
