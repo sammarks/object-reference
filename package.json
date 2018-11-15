@@ -20,7 +20,8 @@
     "build": "tsc --emitDeclarationOnly && babel src --out-dir lib --extensions \".ts,.tsx\"",
     "type-check": "tsc --noEmit",
     "lint": "tslint --project .",
-    "test": "jest"
+    "test": "jest",
+    "release": "standard-version -r"
   },
   "jest": {
     "transform": {
@@ -60,6 +61,7 @@
     "chai": "^4.1.2",
     "jest": "^23.6.0",
     "jest-junit": "^5.1.0",
+    "standard-version": "^4.4.0",
     "ts-jest": "^23.0.0",
     "tslint": "^5.10.0",
     "tslint-config-standard": "^7.1.0",
